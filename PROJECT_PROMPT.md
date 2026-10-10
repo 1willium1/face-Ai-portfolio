@@ -1,27 +1,25 @@
 # PROJECT_PROMPT — Master Specification
 
-> Dr.Witcha — Portfolio & Activity Gallery
+> SDU Face AI Intelligence — Portfolio & Activity Biometric Gallery
+> ผู้พัฒนาโครงงาน: นายปวีณวัชร์ เหลืองอุทัย (รหัสนักศึกษา: 6811011662009)
 
 ## วัตถุประสงค์
-สร้างเว็บสรุปผลงานและประวัติกิจกรรมของ ดร.วิชชา ฉิมพลี มหาวิทยาลัยสวนดุสิต ดึงข้อมูลจาก dusit.ac.th จัดหมวดหมู่ สร้างไทม์ไลน์ มีระบบ AI สแกนใบหน้า
+สร้างเว็บแอปพลิเคชันระบบสรุปผลงาน กิจกรรมวิชาการ และงานวิจัยของ รศ.ดร.กิตติศักดิ์ พัฒนไพบูลย์ มหาวิทยาลัยสวนดุสิต พร้อมระบบ AI Biometric สแกนและตรวจพิสูจน์ใบหน้าอัจฉริยะ (Smart Campus Face Intelligence)
 
 ## ขอบเขตงาน
-1. **Gallery** — Grid 2 คอลัมน์ (1 คอลัมน์บนมือถือ) แสดงการ์ดกิจกรรมพร้อม Image Carousel, Search real-time, Filter ปี พ.ศ., Modal แก้ไข/ลบ (persist LocalStorage `dr_witcha_activities_v2`)
-2. **Stat Badges** — จำนวนกิจกรรม, รูปภาพรวม, ช่วงปี พ.ศ. 2556-2569, ความแม่นยำ 100%
-3. **AI Security Scanner** — อัปโหลดใบหน้าเป้าหมาย → สแกนทุกกิจกรรม → วาดวงกลมเรืองแสง (🎯 Target / ⭕ Crowd) + Confidence % + People Counter, Threshold 80-99%, Fallback เมื่อไม่มี Backend
-4. **UI** — Glassmorphism Slate-950 + Glow Gradient (Blue-600/Amber-500), ฟอนต์ Prompt, rounded-[36px], Framer Motion
-5. **Backend** — FastAPI + InsightFace SCRFD + ArcFace 512-D + ONNX Runtime, endpoints 5 ตัวตาม README
-6. **Data** — `Activity` interface (id, images[], date, year, title, context, what, where, how, sourceUrls) ครอบคลุม พ.ศ. 2556-2569
+1. **Activity Gallery** — Grid แสดงการ์ดกิจกรรมพร้อม Image Carousel, Search แบบ real-time, Filter ช่วงปี พ.ศ. 2560–2569, Modal แก้ไข/ลบ (persist LocalStorage `sdu_face_ai_activities_v4`)
+2. **Stat Badges** — สรุปจำนวนกิจกรรมทั้งหมด, รูปภาพรวมในฐานข้อมูล, ช่วงปี พ.ศ., ความแม่นยำ AI Vector Matching
+3. **AI Security Scanner & Detective Board** — อัปโหลดใบหน้าเป้าหมาย → ค้นหาและสแกนในคลังภาพกิจกรรม → วาดวงกลม/กรอบเรืองแสง (🎯 Target Match / ⭕ Crowd/Other Faces) + ค่า Confidence % + People Counter + Fallback เมื่อไม่มี Backend
+4. **UI Design** — Dark Glassmorphism HUD Theme (Slate-950 + Glow Cyan-500/Emerald-400), Typography: Prompt / Inter, Framer Motion Micro-animations
+5. **Backend & AI Architecture** — FastAPI + InsightFace SCRFD + ArcFace 512-D + ONNX Runtime, พร้อม Browser Face-API Fallback Engine
+6. **Data Structure** — `Activity` interface (id, images[], date, year, title, context, what, where, how, sourceUrls) ครอบคลุม พ.ศ. 2560–2569
 
 ## Tech Stack
-Frontend: React 18 + TS + Vite + Tailwind 3 + Zustand + Framer Motion + Lucide + React Router v7
-Backend: FastAPI + Uvicorn + InsightFace + ArcFace + OpenCV + NumPy + ONNX Runtime
-
-## โครงสร้างไฟล์
-ดู README.md หัวข้อ Project Structure
+- Frontend: React 18 + TypeScript + Vite + Tailwind CSS + Zustand + Framer Motion + Lucide React
+- Backend: FastAPI + Uvicorn + InsightFace + ArcFace + OpenCV + NumPy + ONNX Runtime
 
 ## เกณฑ์สำเร็จ
-- `npm run dev` → http://localhost:5173
-- `npm run build` → tsc + vite build ผ่าน
-- `cd backend && python main.py` → http://localhost:8000 (fallback ได้ถ้าไม่รัน)
-- Responsive, แก้ไข/ลบ persist, สแกนใบหน้า mock/fallback ใช้งานได้
+- `npm run dev` → http://localhost:5173 หรือ http://localhost:5174
+- `npm run build` → tsc + vite build ผ่านสมบูรณ์
+- ระบบสแกนและเปรียบเทียบใบหน้าทำงานได้ทั้งโหมด Online และ Browser-Fallback Mode
+- ลบ/แก้ไขข้อมูลบันทึกลง LocalStorage อัตโนมัติ

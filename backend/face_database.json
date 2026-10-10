@@ -3,11 +3,11 @@
   "model": "InsightFace-ArcFace",
   "embedding_dim": 512,
   "persons": {
-    "wichcha_chimploy": {
-      "id": "wichcha_chimploy",
-      "name": "ดร.วิชชา ฉิมพลี",
-      "role": "ประธานสภาคณาจารย์และพนักงาน",
-      "title": "ผู้ช่วยศาสตราจารย์ ดร.",
+    "kittisak_pattanapaiboon": {
+      "id": "kittisak_pattanapaiboon",
+      "name": "รศ.ดร.กิตติศักดิ์ พัฒนไพบูลย์",
+      "role": "ผู้อำนวยการศูนย์นวัตกรรมปัญญาประดิษฐ์",
+      "title": "รองศาสตราจารย์ ดร.",
       "embeddings": [
         [
           0.7517746686935425,
